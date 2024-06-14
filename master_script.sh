@@ -22,12 +22,12 @@ fi
 TITLE="
 \033[1;33m╭━━━╮╭╮\033[0m╱╱╱\033[1;33m╭╮╭╮\033[0m╱╱╱╱╱╱\033[1;37m╭━━━╮\033[0m╱╱╱\033[1;37m╭╮//////
 \033[1;33m┃╭━╮┣╯╰╮\033[0m╱╱\033[1;33m┃┃┃┃\033[0m╱╱╱╱╱╱\033[1;37m┃╭━╮┃\033[0m╱╱╱\033[1;37m┃┃/////////
-\033[1;33m┃╰━━╋╮╭╋━━┫┃┃┃╭━━┳━╮\033[1;37m┃┃\033[0m╱\033[1;37m╰╋╮\033[0m╱\033[1;37m╭╰━┳━━┳━━┓/////////
+\033[1;33m┃╰━━╋╮╭╋━━┫┃┃┃╭━━┳━╮\033[1;37m┃┃\033[0m╱\033[1;37m╰╋╮\033[0m╱\033[1;37m╭┃╰━┳━━┳━┓/////////
 \033[1;33m╰━━╮┃┃┃┃┃━┫┃┃┃┃╭╮┃╭╯\033[1;37m┃┃\033[0m╱\033[1;37m╭┫┃\033[0m╱\033[1;37m┃┃╭╮┃┃━┫╭╯//////
 \033[1;33m┃╰━╯┃┃╰┫┃━┫╰┫╰┫╭╮┃┃\033[0m╱\033[1;37m┃╰━╯┃╰━╯┃╰╯┃┃━┫┃/////
 \033[1;33m╰━━━╯╰━┻━━┻━┻━┻╯╰┻╯\033[0m╱\033[1;37m╰━━━┻━╮╭┻━━┻━━┻╯//
-\033[0m╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱\033[1;37m╭━╯┃\033[0m///////
-   ╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱\033[1;37m╰━━╯\033[0m//
+\033[0m//╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱\033[1;37m╭━╯┃\033[0m///////
+   ╱╱╱╱╱╱/╱╱╱╱╱╱╱╱╱╱╱╱╱╱\033[1;37m╰━━╯\033[0m//
 "
 
 TOOLS_DIR="tools"
@@ -36,10 +36,11 @@ REMOTE_INFO_URL="https://raw.githubusercontent.com/ash14545/StellarCyber-Scripts
 
 # Extract the version from project.json
 VERSION=$(jq -r '.version' "$INFO_FILE")
+remote_version=$(curl -s "$REMOTE_INFO_URL" | jq -r '.version')
+VER_MSG="A new version ($remote_version) is available. You are currently using version ($VERSION)."
 
 # Function to check for updates
 check_updates() {
-   local remote_version=$(curl -s "$REMOTE_INFO_URL" | jq -r '.version')
    if [ "$remote_version" != "$VERSION" ]; then
       read -p "A new version ($remote_version) is available. Do you want to download it? (y/n): " choice
       if [ "$choice" == "y" ]; then
@@ -49,7 +50,7 @@ check_updates() {
          exit 0
       fi
    else
-      echo "You are using the latest version ($VERSION)."
+      VER_MSG="You are using the latest version ($VERSION)"
    fi
 }
 
@@ -72,6 +73,7 @@ options_setup() {
 master_menu() {
    while true; do
       clear
+      echo "$VER_MSG"
       echo -e "$TITLE"
       echo -e "\nThis is the Stellar Cyber master tool script."
       echo ""
