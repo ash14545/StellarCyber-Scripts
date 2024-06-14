@@ -1,6 +1,6 @@
 {
     "name": "Stellar Cyber Tools Scripts",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A collection of useful tools for Stellar Cyber.",
     "author": "Russell Farinha",
     "repository": "https://github.com/ash14545/StellarCyber-Scripts",
@@ -8,12 +8,12 @@
        {
           "name": "Option 1",
           "description": "Input 2 values. Script will add them together",
-          "url": "https://gist.githubusercontent.com/ash14545/b058ac710ba5216d32daba2ae38fde63/raw/68819e12a2e7ced5d677fa9d40c7c5dd345bbd5e/option1.sh"
+          "url": "https://gist.githubusercontent.com/ash14545/b058ac710ba5216d32daba2ae38fde63/raw/784cd5b43034717d8b5eb0967b2073d01278129f/option1.sh"
        },
        {
           "name": "Option 2",
           "description": "Input 2 values. Script will subtract them",
-          "url": "https://gist.githubusercontent.com/ash14545/b058ac710ba5216d32daba2ae38fde63/raw/108967f06169319782ee76987fade3ffba147e2a/option2.sh"
+          "url": "https://gist.githubusercontent.com/ash14545/b058ac710ba5216d32daba2ae38fde63/raw/9f1fe0c55bb147abd7fe30303519079c64b327b0/option2.sh"
        }
     ]
  }

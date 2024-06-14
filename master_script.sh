@@ -81,6 +81,7 @@ master_menu() {
 
       echo -e "\nh) Help"
       echo "q) Quit"
+      echo ""
 
       read -p "Enter your choice: " choice flag
 
@@ -131,11 +132,14 @@ master_menu() {
             if [[ $choice =~ ^[0-9]+$ ]]; then
                local index=$((choice - 1))
                local selected_script_url=$(jq -r --argjson index "$index" '.options[$index].url' "$INFO_FILE")
+               local script_name=$(jq -r --argjson index "$index" '.options[$index].name' "$INFO_FILE")
 
                if [ "$selected_script_url" != "null" ]; then
                   local selected_script="$TOOLS_DIR/$(basename "$selected_script_url")"
-                  curl -o "$selected_script" "$selected_script_url"
+                  echo "Running $script_name..."
+                  curl -o "$selected_script" "$selected_script_url" -s
                   chmod +x "$selected_script"
+                  echo ""
                   ./"$selected_script"
                   read -n 1 -s -r -p "Press any key to continue..."
                else
