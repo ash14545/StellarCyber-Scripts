@@ -73,9 +73,9 @@ options_setup() {
 master_menu() {
    while true; do
       clear
-      echo "$VER_MSG"
       echo -e "$TITLE"
       echo -e "\nThis is the Stellar Cyber master tool script."
+      echo "$VER_MSG"
       echo ""
 
       # Set up options
@@ -91,20 +91,32 @@ master_menu() {
       if [ "$flag" == "-h" ]; then
          case $choice in
          h)
+            clear
+            echo -e "$TITLE"
             echo -e "\nHelp Descriptions:\n"
             jq -r '.options[] | "\(.name): \(.description)"' "$INFO_FILE"
+            echo ""
             read -n 1 -s -r -p "Press any key to continue..."
             ;;
          q)
+            clear
+            echo -e "$TITLE"
+            echo -e "\nQuit Description:\n"
             echo "Quit the menu. This script will close."
+            echo ""
+            read -n 1 -s -r -p "Press any key to continue..."
             ;;
          *)
             if [[ $choice =~ ^[0-9]+$ ]]; then
                local index=$((choice - 1))
+               local script_name=$(jq -r --argjson index "$index" '.options[$index].name' "$INFO_FILE")
                local desc=$(jq -r --argjson index "$index" '.options[$index].description' "$INFO_FILE")
 
                if [ "$desc" != "null" ]; then
-                  echo -e "\nHelp for Option $choice: $desc\n"
+                  clear
+                  echo -e "$TITLE"
+                  echo -e "\n$script_name Description:\n"
+                  echo -e "$desc\n"
                else
                   echo "Invalid choice, please select a valid option."
                fi
@@ -119,8 +131,11 @@ master_menu() {
       else
          case $choice in
          h)
+            clear
+            echo -e "$TITLE"
             echo -e "\nHelp Descriptions:\n"
             jq -r '.options[] | "\(.name): \(.description)"' "$INFO_FILE"
+            echo ""
             read -n 1 -s -r -p "Press any key to continue..."
             ;;
          q)
