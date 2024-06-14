@@ -14,6 +14,11 @@
           "name": "Option 2",
           "description": "Input 2 values. Script will subtract them",
           "url": "https://gist.githubusercontent.com/ash14545/b058ac710ba5216d32daba2ae38fde63/raw/9f1fe0c55bb147abd7fe30303519079c64b327b0/option2.sh"
+       },
+       {
+         "mame": "Option 3",
+         "description": "Input 2 values. Script will multiply them",
+         "url": "https://gist.githubusercontent.com/ash14545/b058ac710ba5216d32daba2ae38fde63/raw/0a338646a1ede376ef944c45e2d48a1995cec818/option3.sh"
        }
     ]
  }
