@@ -45,7 +45,7 @@ check_updates() {
       read -p "A new version ($remote_version) is available. Do you want to download it? (y/n): " choice
       if [ "$choice" == "y" ]; then
          # Download the entire repository
-         curl -L "https://github.com/ash14545/StellarCyber-Scripts/archive/main.tar.gz" | tar -xz
+         curl -L "https://github.com/ash14545/StellarCyber-Scripts/archive/main.tar.gz" | tar -xz --strip-components=1
          echo "Updated to version $remote_version. Please restart the script."
          exit 0
       fi
