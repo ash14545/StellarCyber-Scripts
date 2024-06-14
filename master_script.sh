@@ -157,14 +157,24 @@ master_menu() {
             # cd ../ and delete the script directory
             clear
             echo -e "$TITLE"
-            echo -e "\nCleaning up in progress...\n"
-            # execution begins here
-            cd .. && echo "$(basename $(pwd))" #rm -r "$(basename $(pwd))"
-            #rm -r "tools"
+            read -p "This will delete all Stellar Cyber master tool script files. Would you like to continue? (y/n): " choice
+            if [ "$choice" == "y" ]; then
+               echo -e "\nCleaning up in progress...\n"
+               # execution begins here
+               directory_name=$(pwd)
+               cd ../
+               rm -r "$directory_name"
 
-            echo -e "\nClean up complete...\n"
-            echo ""
-            read -n 1 -s -r -p "Press any key to continue..."
+               echo -e "\nClean up complete. The script will now quit..."
+               echo ""
+               read -n 1 -s -r -p "Press any key to continue..."
+               exit 0
+            else
+               echo -e "\nNo files were deleted..."
+               echo ""
+               read -n 1 -s -r -p "Press any key to continue..."
+            fi
+
             ;;
          *)
             # Check if the choice is a valid number
