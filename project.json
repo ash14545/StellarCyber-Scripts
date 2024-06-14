@@ -1,6 +1,6 @@
 {
     "name": "Stellar Cyber Tools Scripts",
-    "version": "1.0.1.002",
+    "version": "1.0.2",
     "description": "A collection of useful tools for Stellar Cyber.",
     "author": "Russell Farinha",
     "repository": "https://github.com/ash14545/StellarCyber-Scripts",
@@ -18,6 +18,11 @@
        {
          "name": "Option 3",
          "description": "Input 2 values. Script will multiply them",
+         "url": "https://gist.githubusercontent.com/ash14545/b058ac710ba5216d32daba2ae38fde63/raw/2f0a40b862a7896ec25672b12325eefe9f2988cd/option3.sh"
+       },
+       {
+         "name": "Option 4",
+         "description": "something here",
          "url": "https://gist.githubusercontent.com/ash14545/b058ac710ba5216d32daba2ae38fde63/raw/2f0a40b862a7896ec25672b12325eefe9f2988cd/option3.sh"
        }
     ]
