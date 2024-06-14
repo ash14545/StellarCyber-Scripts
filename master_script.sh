@@ -83,6 +83,7 @@ master_menu() {
 
       echo -e "\nh) Help"
       echo "q) Quit"
+      echo "c) Clean up"
       echo ""
 
       read -p "Enter your choice: " choice flag
@@ -103,6 +104,14 @@ master_menu() {
             echo -e "$TITLE"
             echo -e "\nQuit Description:\n"
             echo "Quit the menu. This script will close."
+            echo ""
+            read -n 1 -s -r -p "Press any key to continue..."
+            ;;
+         c)
+            clear
+            echo -e "$TITLE"
+            echo -e "\nClean Up Description:\n"
+            echo "Clear all locally downloaded tools. Leaves it how you found it. No footprints!"
             echo ""
             read -n 1 -s -r -p "Press any key to continue..."
             ;;
@@ -143,6 +152,19 @@ master_menu() {
             read -n 1 -s -r -p "Press any key to continue..."
             clear
             exit 0
+            ;;
+         c)
+            # cd ../ and delete the script directory
+            clear
+            echo -e "$TITLE"
+            echo -e "\nCleaning up in progress...\n"
+            # execution begins here
+            cd .. && echo "$(basename $(pwd))" #rm -r "$(basename $(pwd))"
+            #rm -r "tools"
+
+            echo -e "\nClean up complete...\n"
+            echo ""
+            read -n 1 -s -r -p "Press any key to continue..."
             ;;
          *)
             # Check if the choice is a valid number
