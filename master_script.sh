@@ -19,6 +19,11 @@ if ! command -v jq &>/dev/null; then
    fi
 fi
 
+# Load environment variables
+if [ -f .env ]; then
+    export $(cat .env | xargs)
+fi
+
 TITLE="
 \033[1;33m╭━━━╮╭╮\033[0m╱╱╱\033[1;33m╭╮╭╮\033[0m╱╱╱╱╱╱\033[1;37m╭━━━╮\033[0m╱╱╱\033[1;37m╭╮//////
 \033[1;33m┃╭━╮┣╯╰╮\033[0m╱╱\033[1;33m┃┃┃┃\033[0m╱╱╱╱╱╱\033[1;37m┃╭━╮┃\033[0m╱╱╱\033[1;37m┃┃/////////
